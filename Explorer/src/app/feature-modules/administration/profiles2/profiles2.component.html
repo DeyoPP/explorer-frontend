@@ -1,0 +1,23 @@
+<!-- find-other-people2.component.html -->
+<div class="center-class">  
+  <div class="find-people-container">
+    <h1>Discover people you might know:</h1>
+    <div *ngIf="profileFollowed" class="container">
+      <div [ngClass]="{'red-text': alreadyFollow, 'black-text': !alreadyFollow}">
+        {{ profileFollowed }}
+      </div>
+      <div class="center-button">
+        <button mat-raised-button class="white-button" (click)=" onFollowOKClicked()">OK</button>
+      </div>
+    </div>
+    <div class="profile-list">
+      <div *ngFor="let individualProfile of profiles" class="profile-card">
+        <img class="profile-picture" src="{{ individualProfile.profilePicture }}" alt="">
+        <div class="profile-details">
+          <div class="name">{{ individualProfile.firstName }} {{ individualProfile.lastName }}</div>
+          <button class="follow-button" (click)="onFollowClicked(individualProfile)" *ngIf="!followedProfiles[individualProfile.id!]">Follow</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

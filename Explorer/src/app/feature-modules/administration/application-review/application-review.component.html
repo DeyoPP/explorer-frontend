@@ -1,0 +1,27 @@
+<div id="applicationReview">
+    <div class="title-section">
+        <h1 class="title">Application reviews</h1>
+    </div>
+    <div id="applicationReview-details">
+    <div class="table-container">
+        <table class="reviews-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Grade</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ar of applicationReview">
+                    <td>{{ getUserName(ar.userId) }}</td>
+                    <td>
+                        <span *ngFor="let _ of getStars(ar.grade)">&#9733;</span>
+                    </td>
+                    <td>{{ ar.comment }}</td>                   
+                </tr>               
+            </tbody>
+        </table>
+    </div>   
+</div>
+

@@ -1,0 +1,141 @@
+#clubRequest {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#clubRequest p {
+    font-size: 24px;
+    margin-bottom: 10px;
+    
+}
+
+#clubRequest-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.club-request-item {
+    margin: 10px;
+}
+
+.request-card {
+    position: relative;
+    width: 50vw;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.request-table {
+    width: 40%;
+    border-collapse: collapse;      
+    box-shadow: none;
+}
+
+.column-label {
+    font-weight: bold;
+    padding: 8px;
+    display: flex;
+    justify-content: left;
+}
+
+.column-content {
+    padding: 5px;
+    display: flex;
+    justify-content: left;
+}
+
+.actions{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumbnail {
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    margin: 10px;
+  }
+  .thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+  }
+
+.div-table{
+    margin-top: 30px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.action-button {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background: linear-gradient(rgb(56, 28, 117), rgb(65, 59, 131));
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.action-button:hover {
+    background: white;
+    color: black;
+    border: 1px solid rgb(56, 28, 117);
+}
+
+td{
+    width: 50%;
+}
+
+h1{
+    color: rgb(56, 28, 117);
+    margin-bottom: 30px;
+    margin-top: 50px;
+  }
+  .action-buttons-container {
+    display: flex;
+    align-items: center; /* Align buttons vertically in the center */
+  }
+  
+  .action-button-ng {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background: linear-gradient(rgb(56, 28, 117), rgb(65, 59, 131));
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 70px;
+    margin-right: 30px;
+    padding: auto;
+}
+
+.action-button-ng:hover {
+    background: white;
+    color: black;
+    border: 1px solid rgb(56, 28, 117);
+}
+.close-button{
+    display: flex;
+    justify-content: flex-start;
+}
+.marginate{
+    margin-left: 10px;
+}

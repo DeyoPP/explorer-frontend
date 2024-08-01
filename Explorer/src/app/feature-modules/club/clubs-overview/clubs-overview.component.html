@@ -1,0 +1,34 @@
+<!-- CLUB Component -->
+<div id="equipment" class="club-container">
+    <div id="equipment-details" class="club-details-container">
+        <div class="center-class">  
+            <div class="find-people-container">
+              <h1>Discover clubs</h1>
+              <div class="add-club-button">   
+                <button color="primary" (click)="onAddClicked()" mat-icon-button><mat-icon>add</mat-icon></button>
+              </div>
+              <hr>
+              <div class="profile-list">
+                <div *ngFor="let club of clubs" class="profile-card">
+                    <div class="eb" *ngIf="club.ownerId==currentUser.id">
+                        <button  class="edit-button" color="primary" (click)="onEditClicked(club)" mat-icon-button><mat-icon>edit</mat-icon></button>
+                    </div>
+                    <img class="profile-picture" src="{{ club.imageUrl }}" alt="">
+                    <div class="profile-details">
+                        <div class="name">{{ club.name }}</div>
+                        <button class="follow-button" color="primary" [routerLink]="['/clubs', club.id]">More</button>     
+                        <button *ngIf="club.ownerId!==currentUser.id" class="follow-button" (click)="onSendRequestClicked(club)" color="primary">Send Request</button>
+                    </div>
+                </div>
+               </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<div  *ngIf="shouldRenderClubForm" class="message-form-wrapper">
+    <button mat-icon-button class="close-button" (click)="onAddClicked()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <xp-club-form [shouldEdit]="shouldEdit" [club]="selectedClub" (clubUpdated)="getClubs()" (clubAdded)="getClubs()"></xp-club-form>
+</div>

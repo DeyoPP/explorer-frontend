@@ -1,0 +1,36 @@
+<div class="questionnaire-container" *ngIf="!done">
+  
+  <h1 class="center-class">Questionnaire</h1>
+    <div class="center-class">
+        <form class="form-container">
+          <div class="question-card">
+            <mat-label><div class="centerh"><b>{{ currentQuestion.text }}</b></div></mat-label><br />
+            <div class="center" *ngIf="preferences.length === 0 && showSubmitButton"> In order for questionnaire to be valid you need to prefer at least one type of tour.</div>
+            <div class="option" *ngFor="let option of currentQuestion.options">
+              <input type="radio" [name]="currentQuestion.id" [value]="option.value" id="{{ option.value }}" />
+              <label  for="{{ option.value }}">{{ option.label }}</label>
+            </div>
+          </div>
+          <div class="navigation-buttons" *ngIf="currentQuestionIndex > 0">
+            <button class="action-button" (click)="previousQuestion()" *ngIf="!finished">Previous</button>
+            <button class="action-button" (click)="nextQuestion()" *ngIf="!showSubmitButton && !finished">Next</button>
+            <button (click)="onSubmit()" *ngIf="showSubmitButton" [disabled]="preferences.length === 0 && showSubmitButton"
+                [ngClass]="{'action-button': true, 'disabled-button': preferences.length === 0 && showSubmitButton}">
+                <b>Submit answers</b>
+            </button>
+              </div>
+          <div class="navigation-buttons" *ngIf="currentQuestionIndex == 0">
+            <p><p>
+            <button class="action-button" (click)="nextQuestion()" *ngIf="!showSubmitButton && !finished">Next</button>
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div *ngIf="done">
+    <h1 class="class-h1">Questionnaire</h1>
+    <div class="center-class">
+      <p class="has-margin-bottom">You have already completed the questionnaire!</p>
+    </div>
+  </div>
+  

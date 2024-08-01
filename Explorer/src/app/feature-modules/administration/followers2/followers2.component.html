@@ -1,0 +1,26 @@
+<!-- tourist-followers.component.html -->
+<div class="center-class">  
+  <div class="followers-container">
+    <h1>Your Followers:</h1>
+    <div class="follower-list">
+      <div *ngFor="let individualFollower of followers" class="follower-card"> 
+        <a [routerLink]="['/app-user-profile', individualFollower.id]" class="profile-link">
+          <img class="profile-picture" src="{{ individualFollower.profilePicture }}" alt="">
+          <div class="follower-details">
+            <div class="name">{{ individualFollower.firstName }} {{ individualFollower.lastName }}</div>
+          </div>
+        </a>        
+        <div class="follower-details">
+          <button class="message-button" (click)="sendMessageTo(individualFollower)">Message</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <button mat-raised-button class="find-people-button" (click)="findPeople()">Find people</button>
+  <div *ngIf="selectedFollower && showMessageForm" class="message-form-wrapper">
+    <button mat-icon-button class="close-button" (click)="toggleChat()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <xp-message-form2 [selectedFollower]="selectedFollower"></xp-message-form2>
+  </div>
+</div>

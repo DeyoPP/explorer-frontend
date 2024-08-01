@@ -1,0 +1,57 @@
+<div id="clubRequest">
+    <h1>Manage blogs</h1>
+    <button mat-raised-button class="action-button" (click)="onAddClicked()">CREATE BLOG</button>
+    <div id="clubRequest-details">
+        <div *ngFor="let bl of blogs" class="club-request-item">
+            <div class="request-card">
+                <div class="div-table">
+                    <table class="request-table">
+                        <tr>
+                            <td class="column-label">Title</td>
+                            <td class="column-content">{{bl.title}}</td>
+                        </tr>
+                        <tr>
+                            <td class="column-label">Creation date</td>
+                            <td class="column-content">{{ bl.creationTime | date:'short'}}</td>
+                        </tr>
+                        <tr>
+                            <td class="column-label">Status</td>
+                            <td class="column-content" *ngIf="bl.status === 1">Published</td>
+                            <td class="column-content" *ngIf="bl.status === 2">Closed</td>
+                        </tr>
+                    </table>
+                </div>                
+                <div class="actions">
+                  <div class="edit-buttons">
+                      <ng-container *ngIf="bl.status === 1; then publishedBlog else closedBlog"></ng-container>
+                      <ng-template #publishedBlog>
+                        <div class="marginate">
+                          <button class="action-button-ng" color="accent" (click)="closeBlog(bl)" mat-raised-button> Close</button>
+                        </div>
+                      </ng-template>
+                      <ng-template #closedBlog>
+                        <ng-container *ngIf="bl.status === 2; then closedBlog"></ng-container>
+                        <ng-template #closedBlog>
+                          <div class="marginate">
+                            <button class="action-button-ng" (click)="publishBlog(bl)" mat-raised-button>Publish</button>
+                          </div>
+                        </ng-template>
+                      </ng-template>
+                  </div> 
+                  
+                  <div class="edit-buttons">
+                    <div class="thumbnail">
+                      <img [src]="bl.image" alt="Image">
+                     </div>
+                      <button class="action-button" color="accent" (click)="deleteBlog(bl.id || '0')" mat-icon-button>
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <button class="action-button" color="primary" (click)="onEditClicked(bl)" mat-icon-button>
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                  </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

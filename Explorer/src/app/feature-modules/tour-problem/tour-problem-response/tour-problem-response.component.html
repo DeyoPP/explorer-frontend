@@ -1,0 +1,21 @@
+<div >
+  <p id="entity-title-paragraph" class="tour-problem-response-title">Tour Problem Responses</p>
+  <div >
+    <div *ngIf="currentUser && currentProblemId">
+      <div class="card">
+        <div class="message-container">
+          <div *ngFor="let response of problemResponses" class="message">
+            <p class="tourist">
+              <strong>{{ mappedUsername[response.commenterId] }}</strong>
+              {{ response.timeStamp | date:'medium' }}
+            </p>
+            <div class="message-content">
+              <p>{{ response.response }}</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
