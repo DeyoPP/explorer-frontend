@@ -41,7 +41,7 @@ jobs:
 
     - name: Sync to S3
       run: |
-        aws s3 sync ./Explorer/dist s3://dipl-explorer-frontend-bucket --acl public-read --delete
+        aws s3 sync ./Explorer/dist s3://dipl-explorer-frontend-bucket
     - name: Invalidate CloudFront cache
       run: |
         aws cloudfront create-invalidation --distribution-id E3NKFQT21KWKOO --paths "/*"
