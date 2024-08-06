@@ -39,12 +39,12 @@ jobs:
         role-to-assume: ${{ secrets.ROLE_ARN }}
         aws-region: us-east-1
 
-    - name: Sync to S3
+    - name: Upload to S3
       run: |
-        cd Explorer/dist
-        aws s3 sync . s3://dipl-explorer-frontend-bucket --delete
-        # Move to the `dist` directory and sync its contents to the S3 bucket root.
+        aws s3 cp Explorer/dist s3://dipl-explorer-frontend-bucket/ --recursive --delete
+        # Copy the contents of the `dist` directory to the root of the S3 bucket, deleting any existing files.
 
     - name: Invalidate CloudFront cache
       run: |
         aws cloudfront create-invalidation --distribution-id E3NKFQT21KWKOO --paths "/*"
+        # Invalidate all paths in the CloudFront distribution.
