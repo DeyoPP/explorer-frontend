@@ -39,15 +39,8 @@ jobs:
         aws-region: us-east-1
 
     - name: Sync to S3
-      uses: jakejarvis/s3-sync-action@v1.3.0
-      with:
-        args: --acl public-read --delete
-      env:
-        SOURCE_DIR: './Explorer/dist' # Change to your Angular build output directory
-        TARGET_DIR: 's3://dipl-explorer-frontend-bucket' # Replace with your S3 bucket name
-
+      run: |
+        aws s3 sync ./Explorer/dist s3://dipl-explorer-frontend-bucket --acl public-read --delete
     - name: Invalidate CloudFront cache
-      uses: chetangowda/cloudfront-invalidation-action@v2
-      with:
-        distribution-id: 'E3NKFQT21KWKOO'
-        paths: '/*'
+      run: |
+        aws cloudfront create-invalidation --distribution-id E3NKFQT21KWKOO --paths "/*"
