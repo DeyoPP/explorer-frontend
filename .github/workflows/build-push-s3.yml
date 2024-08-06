@@ -41,8 +41,9 @@ jobs:
 
     - name: Sync to S3
       run: |
-        aws s3 sync Explorer/dist s3://dipl-explorer-frontend-bucket --delete
-        # The `--delete` option ensures that files deleted locally are also removed from the S3 bucket.
+        cd Explorer/dist
+        aws s3 sync . s3://dipl-explorer-frontend-bucket --delete
+        # Move to the `dist` directory and sync its contents to the S3 bucket root.
 
     - name: Invalidate CloudFront cache
       run: |
